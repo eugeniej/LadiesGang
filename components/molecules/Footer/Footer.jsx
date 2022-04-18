@@ -1,8 +1,13 @@
 import { Flex, Image, Link, Text } from "@chakra-ui/react";
 import { Colors } from "../../../utils/colors";
 import { FaInstagram, FaTwitter } from "react-icons/fa";
+import { useRouter } from "next/router";
 
-export const Footer = () => {
+export const Footer = ({ logo = true }) => {
+  const { route } = useRouter();
+
+  const isOnHome = route === "/";
+
   return (
     <Flex
       align="center"
@@ -12,12 +17,20 @@ export const Footer = () => {
       p="2rem"
       bgColor={Colors.PURPLE}
     >
-      <Image src="/ladies-gang.png" height="32" width="32" alt="" />
+      {logo && <Image src="/ladies-gang.png" height="32" width="32" alt="" />}
       <Flex flexDir="row" justify="center" align="center" pt="1rem">
-        <Link px="1rem" href="https://www.instagram.com/ladies_gang.nft/?hl=fr">
+        <Link
+          px="1rem"
+          href="https://www.instagram.com/ladies_gang.nft/?hl=fr"
+          _hover={{ transform: "scale(1.2)", textDecoration: "none" }}
+        >
           <FaInstagram size="18px" color={Colors.WHITE} />
         </Link>
-        <Link px="1rem" href="https://twitter.com/ladies_gang">
+        <Link
+          px="1rem"
+          href="https://twitter.com/ladies_gang"
+          _hover={{ transform: "scale(1.2)", textDecoration: "none" }}
+        >
           <FaTwitter size="18px" color={Colors.WHITE} />
         </Link>
       </Flex>
@@ -28,22 +41,52 @@ export const Footer = () => {
         align="center"
         p="2rem"
       >
-        <Link href="#home" color={Colors.WHITE}>
+        <Link
+          href="/"
+          color={Colors.WHITE}
+          fontFamily="Akshar"
+          _hover={{ transform: "scale(1.2)", textDecoration: "none" }}
+        >
           HOME
         </Link>
-        <Link href="#about" color={Colors.WHITE}>
+        <Link
+          href={route === "/" ? "#about" : "/#about"}
+          color={Colors.WHITE}
+          fontFamily="Akshar"
+          _hover={{ transform: "scale(1.2)", textDecoration: "none" }}
+        >
           ABOUT
         </Link>
-        <Link href="#roadmap" color={Colors.WHITE}>
+        <Link
+          href={isOnHome ? "#roadmap" : "/#roadmap"}
+          color={Colors.WHITE}
+          fontFamily="Akshar"
+          _hover={{ transform: "scale(1.2)", textDecoration: "none" }}
+        >
           ROADMAP
         </Link>
-        <Link href="#collection" color={Colors.WHITE}>
+        <Link
+          href={isOnHome ? "#collection" : "/#collection"}
+          color={Colors.WHITE}
+          fontFamily="Akshar"
+          _hover={{ transform: "scale(1.2)", textDecoration: "none" }}
+        >
           COLLECTION
         </Link>
-        <Link href="#team" color={Colors.WHITE}>
-          TEAM
+        <Link
+          href={isOnHome ? "#team" : "/#team"}
+          color={Colors.WHITE}
+          fontFamily="Akshar"
+          _hover={{ transform: "scale(1.2)", textDecoration: "none" }}
+        >
+          THE TEAM
         </Link>
-        <Link color={Colors.WHITE} href="#">
+        <Link
+          color={Colors.WHITE}
+          href="/Mint"
+          fontFamily="Akshar"
+          _hover={{ transform: "scale(1.2)", textDecoration: "none" }}
+        >
           MINT
         </Link>
       </Flex>
