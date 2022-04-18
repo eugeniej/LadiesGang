@@ -7,6 +7,8 @@ import {
   Text,
   Image,
   IconButton,
+  keyframes,
+  Link,
 } from "@chakra-ui/react";
 import { hasMetamask } from "../../../utils/hasMetamask";
 import { useEthersProvider } from "../../../hooks/useEthersProvider";
@@ -14,14 +16,17 @@ import { ethers } from "ethers";
 import React from "react";
 import { Colors } from "../../../utils/colors";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import NextLink from "next/link";
 import { ToggleMenu } from "../ToggleMenu/ToggleMenu";
+import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 
 export const Header = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [display, setDisplay] = React.useState("none");
   const { account, setAccount, provider } = useEthersProvider();
   const toast = useToast();
+  const { route } = useRouter();
+  const isOnHome = route === "/";
 
   const connecWallet = async () => {
     if (!hasMetamask) {
@@ -60,15 +65,22 @@ export const Header = () => {
     }
   };
 
+  const animationKeyframes = keyframes`
+    0% { transform: scale(1) }
+    50% { transform: scale(1.5) }
+    100% { transform: scale(1) }
+ `;
+
+  const animation = `${animationKeyframes} 2s ease-in-out `;
+
   return (
     <Flex
-      flex={1}
       flexDir="row"
       align="center"
-      justify={["flex-end", "space-between", "center", "center"]}
+      justify={["flex-end", "flex-end", "center", "center"]}
       my="md"
       px={["sm", "sm", "lg", "lg"]}
-      p={["1rem", "1rem", "2rem", "2rem"]}
+      p={["1.5rem", "1.5rem", "2rem", "2rem"]}
       width={"100%"}
     >
       <IconButton
@@ -83,36 +95,68 @@ export const Header = () => {
         display={["flex", "flex", "none", "none"]}
         onClick={() => setDisplay("flex")}
       />
-      <Flex align="center" display={["none", "none", "flex", "flex"]}>
-        <NextLink href="#about" passHref>
-          <Button as="a" variant="ghost" w="100%">
-            ABOUT
-          </Button>
-        </NextLink>
-        <NextLink href="#roadmap" passHref>
-          <Button as="a" variant="ghost" w="100%">
-            ROADMAP
-          </Button>
-        </NextLink>
-        <NextLink href="#collection" passHref>
-          <Button as="a" variant="ghost" w="100%">
-            COLLECTION
-          </Button>
-        </NextLink>
-        <Image src="/ladies-gang.png" height="32" width="32" alt="" />
-        <NextLink href="#team" passHref>
-          <Button as="a" variant="ghost" w="100%">
-            TEAM
-          </Button>
-        </NextLink>
-        <NextLink href="/" passHref>
-          <Button as="a" variant="ghost" w="100%">
-            MINT
-          </Button>
-        </NextLink>
+      <Flex
+        align="center"
+        justify="space-around"
+        display={["none", "none", "flex", "flex"]}
+        width={"100%"}
+      >
+        <Link
+          href={isOnHome ? "#about" : "/#about"}
+          passHref
+          fontSize={["12px", "12px", "16px", "20px"]}
+          fontFamily="Akshar"
+          _hover={{ transform: "scale(1.2)", textDecoration: "none" }}
+        >
+          ABOUT
+        </Link>
+        <Link
+          href={isOnHome ? "#roadmap" : "/#roadmap"}
+          passHref
+          fontSize={["12px", "12px", "16px", "20px"]}
+          fontFamily="Akshar"
+          _hover={{ transform: "scale(1.2)", textDecoration: "none" }}
+        >
+          ROADMAP
+        </Link>
+        <Link
+          href={isOnHome ? "#collection" : "/#collection"}
+          passHref
+          fontSize={["12px", "12px", "16px", "20px"]}
+          fontFamily="Akshar"
+          _hover={{ transform: "scale(1.2)", textDecoration: "none" }}
+        >
+          COLLECTION
+        </Link>
+        <Image
+          as={motion.img}
+          animation={animation}
+          src="/ladies-gang.png"
+          height={["20", "20", "24", "32"]}
+          width={["20", "20", "24", "32"]}
+          alt=""
+        />
+        <Link
+          href={isOnHome ? "#team" : "/#team"}
+          passHref
+          fontSize={["12px", "12px", "16px", "20px"]}
+          fontFamily="Akshar"
+          _hover={{ transform: "scale(1.2)", textDecoration: "none" }}
+        >
+          THE TEAM
+        </Link>
+        <Link
+          href={isOnHome ? "/Mint" : "/"}
+          passHref
+          fontSize={["12px", "12px", "16px", "20px"]}
+          fontFamily="Akshar"
+          _hover={{ transform: "scale(1.2)", textDecoration: "none" }}
+        >
+          {isOnHome ? "MINT" : "HOME"}
+        </Link>
       </Flex>
       <ToggleMenu display={display} setDisplay={setDisplay} />
-      <Flex align={"center"} justify="flex-end">
+      <Flex align={"center"}>
         {isLoading ? (
           <Spinner />
         ) : account ? (
@@ -120,9 +164,9 @@ export const Header = () => {
             flexDir={"column"}
             align={["center", "center", "flex-end", "flex-end"]}
           >
-            <Text fontSize={15}>
+            <Text fontSize={15} color={Colors.WHITE}>
               Connected Wallet :
-              <chakra.span fontWeight={"bold"} color="pink.200">
+              <chakra.span fontWeight={"bold"} color={Colors.BLUE}>
                 {account.substring(0, 6)}...
                 {account.substring(account.length - 4, account.length)}
               </chakra.span>
@@ -132,8 +176,11 @@ export const Header = () => {
           <Button
             bgGradient={`linear(to-r, ${Colors.YELLOW},${Colors.PINK},${Colors.BLUE})`}
             onClick={() => connecWallet()}
-            fontSize="16px"
+            fontSize={["16px", "16px", "16px", "20px"]}
             rounded="3xl"
+            width={["36", "36", "36", "52"]}
+            fontFamily="Akshar"
+            _hover={{ transform: "scale(1.2)", textDecoration: "none" }}
           >
             CONNECT WALLET
           </Button>

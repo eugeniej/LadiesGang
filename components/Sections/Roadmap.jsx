@@ -6,30 +6,49 @@ import { TimelineItem } from "../molecules/TimelineItem/TimelineItem";
 
 const Timeline = () => {
   const timelineEvents = [
-    "Whitelisting Giveaways",
-    "Pre-sale for Whitelisted members",
-    "Public sale",
-    "Welcome to the club",
-    "Events & Launch Party",
+    {
+      title: "Whitelisting Giveaways",
+      text: "Ladies Gang is a group of strong and fulfilled women. We are here to stick together and help us find new opportunities as well as new perspectives. ",
+    },
+    {
+      title: "Pre-sale for Whitelisted members",
+      text: "Ladies Gang is a group of strong and fulfilled women. We are here to stick together and help us find new opportunities as well as new perspectives. ",
+    },
+    {
+      title: "Public sale",
+      text: "Ladies Gang is a group of strong and fulfilled women. We are here to stick together and help us find new opportunities as well as new perspectives. ",
+    },
+    {
+      title: "Welcome to the club",
+      text: "Ladies Gang is a group of strong and fulfilled women. We are here to stick together and help us find new opportunities as well as new perspectives. ",
+    },
+    {
+      title: "Events & Launch Party",
+      text: "Ladies Gang is a group of strong and fulfilled women. We are here to stick together and help us find new opportunities as well as new perspectives. ",
+    },
   ];
 
   return (
-    <Flex
-      flexDir="column"
-      align="flex-start"
-      width="60%"
-      _after={{
-        content: '""',
-        backgroundColor: Colors.DARK_GRAY,
-        position: "absolute",
-        left: "50%",
-        width: "4px",
-        height: "100vh",
-      }}
-    >
-      {timelineEvents.map((event, key) => (
-        <TimelineItem text={event} key={key} />
-      ))}
+    <Flex position="relative" align="center" justify="center">
+      <Flex
+        flexDir="column"
+        align="flex-start"
+        p={["1rem", "1rem", "1.5rem", "2rem"]}
+        width={["100%", "100%", "70%", "70%"]}
+        _after={{
+          content: '""',
+          backgroundColor: Colors.DARK_GRAY,
+          position: "absolute",
+          width: "4px",
+          height: "90%",
+          marginTop: "10",
+          marginBottom: "10",
+        }}
+      >
+        {timelineEvents.map((event, key) => (
+          <TimelineItem title={event.title} text={event.text} key={key} />
+        ))}
+      </Flex>
     </Flex>
   );
 };
@@ -44,7 +63,7 @@ export const Roadmap = (props) => {
       align="center"
       my="md"
       px={["sm", "sm", "lg", "lg"]}
-      p="2rem"
+      p={["1rem", "1rem", "1.5rem", "2rem"]}
     >
       <Title
         text="ROADMAP"

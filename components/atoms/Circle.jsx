@@ -17,7 +17,7 @@ export const Circle = (...props) => {
       {...props}
     >
       <Flex
-        backgroundColor={Colors.WHITE}
+        backgroundColor={Colors.LIGHT_GRAY}
         height="3"
         width="3"
         rounded="full"

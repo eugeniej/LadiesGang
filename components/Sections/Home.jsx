@@ -1,51 +1,62 @@
 import React from "react";
-import { Button, Flex, Text } from "@chakra-ui/react";
+import { Button, Flex, Link } from "@chakra-ui/react";
 import { Colors } from "../../utils/colors";
 import { Header } from "../molecules/Header/Header";
+import { Title } from "../atoms/Title";
 
-export const Home = () => {
-  return (
+export const Home = () => (
+  <Flex
+    id="home"
+    backgroundImage={[
+      "url('/images/hero-mobile.png')",
+      "url('/images/hero-ipad.png')",
+      "url('/images/hero.png')",
+      "url('/images/hero.png')",
+    ]}
+    backgroundPosition="center"
+    backgroundSize={["cover", "cover", "cover", "cover"]}
+    backgroundRepeat={false}
+    flexDir="column"
+    width="100%"
+    height={["60vh", "60vh", "100vh", "100vh"]}
+  >
+    <Header />
     <Flex
-      id="home"
-      backgroundImage="url('/images/hero.png')"
-      backgroundPosition="center"
-      backgroundSize={["auto", "auto", "cover", "cover"]}
-      flexDir="column"
-      width="100%"
-      height="100vh"
+      w={["100%", "100%", "50%", "50%"]}
+      h="90vh"
+      flexDirection="column"
+      justify={["flex-end", "flex-end", "center", "center"]}
+      align="center"
+      paddingBottom={["10px", "20px", "0", "0"]}
     >
-      <Header />
-      <Flex
-        w={["100%", "100%", "50%", "50%"]}
-        h="90vh"
-        flexDirection="column"
-        justify="center"
-        align="center"
+      <Flex flexDirection="column" width="100%" justify="center" align="center">
+        <Title
+          fontSize={["3xl", "4xl", "6xl", "8xl"]}
+          fontWeight="bold"
+          text="THE OFFICIAL"
+        />
+        <Title
+          fontSize={["3xl", "4xl", "6xl", "8xl"]}
+          fontWeight="bold"
+          text="GIRLS LAND"
+        />
+      </Flex>
+      <Link
+        href="https://discord.com/login?redirect_to=%2Fchannels%2F947691836888203334%2F947691837731266622"
+        _hover={{ transform: "scale(1.2)", textDecoration: "none" }}
       >
-        <Flex
-          flexDirection="column"
-          width="100%"
-          justify="center"
-          align="center"
-        >
-          <Text fontSize={["2xl", "3xl", "6xl", "6xl"]} fontWeight="bold">
-            THE OFFICIAL
-          </Text>
-          <Text fontSize={["2xl", "3xl", "6xl", "6xl"]} fontWeight="bold">
-            GIRLS LAND
-          </Text>
-        </Flex>
         <Button
           bgGradient={`linear(to-r, ${Colors.YELLOW},${Colors.PINK},${Colors.BLUE})`}
-          onClick={() => {}}
-          fontSize={15}
+          fontSize={20}
           rounded="3xl"
-          maxWidth="44"
+          width={["40", "48", "56", "64"]}
           marginTop="10"
+          fontFamily="Akshar"
+          _hover={{ textDecoration: "none" }}
         >
-          JOIN DISCORD
+          Join Discord
         </Button>
-      </Flex>
+      </Link>
     </Flex>
-  );
-};
+  </Flex>
+);
