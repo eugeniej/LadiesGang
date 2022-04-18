@@ -27,7 +27,6 @@ export const Home = () => (
       flexDirection="column"
       justify={["flex-end", "flex-end", "center", "center"]}
       align="center"
-      paddingBottom={["10px", "20px", "0", "0"]}
     >
       <Flex flexDirection="column" width="100%" justify="center" align="center">
         <Title

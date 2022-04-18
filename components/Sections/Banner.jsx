@@ -10,7 +10,7 @@ export const Banner = () => (
       "url('/images/static-banner.png')",
     ]}
     backgroundPosition="center"
-    backgroundSize="cover"
+    backgroundSize={["cover", "cover", "cover", "cover"]}
     backgroundAttachment="fixed"
     width="100%"
     height={["500px", "500px", "600px", "600px"]}

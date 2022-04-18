@@ -24,6 +24,7 @@ export const ToggleMenu = ({ display, setDisplay }) => (
         aria-label="Close Menu"
         size="lg"
         icon={<CloseIcon />}
+        backgroundColor="transparent"
         onClick={() => setDisplay("none")}
       />
     </Flex>

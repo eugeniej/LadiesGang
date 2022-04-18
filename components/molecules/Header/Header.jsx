@@ -91,6 +91,7 @@ export const Header = () => {
         size="lg"
         mr="2"
         icon={<HamburgerIcon />}
+        backgroundColor="transparent"
         color={Colors.WHITE}
         display={["flex", "flex", "none", "none"]}
         onClick={() => setDisplay("flex")}
