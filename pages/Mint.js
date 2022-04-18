@@ -66,7 +66,7 @@ export default function Mint() {
   return (
     <Layout
       logo={false}
-      bgGradient={`linear(${Colors.DARK},${Colors.DARK},${Colors.PURPLE} ,${Colors.PURPLE})`}
+      bgGradient={`linear(${Colors.DARK},${Colors.PURPLE} ,${Colors.PURPLE})`}
     >
       <Flex
         flexDir="column"

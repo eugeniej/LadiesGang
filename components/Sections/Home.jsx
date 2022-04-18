@@ -18,14 +18,14 @@ export const Home = () => (
     backgroundRepeat={false}
     flexDir="column"
     width="100%"
-    height={["60vh", "60vh", "100vh", "100vh"]}
+    height={["auto", "auto", "100vh", "100vh"]}
   >
     <Header />
     <Flex
       w={["100%", "100%", "50%", "50%"]}
       h="90vh"
       flexDirection="column"
-      justify={["flex-end", "flex-end", "center", "center"]}
+      justify={["center", "center", "center", "center"]}
       align="center"
     >
       <Flex flexDirection="column" width="100%" justify="center" align="center">
